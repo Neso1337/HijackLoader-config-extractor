@@ -4,6 +4,8 @@ A static config extractor for **HijackLoader** MSI samples, written in C. The MS
 
 It also dumps the final payload delivered by the loader, into `module-dumps\dump-PAYLOAD.bin`, which can be found after the last module in the configutation file in it's encrypted stage.
 
+The `yara\` directory contains the rules I wrote to detect MSI delivered samples. The firt rule matches on the initial configuration file on disk, while the second matches on crc32 hashed module names in memory to locate the ti64 module.
+
 ## Usage
 
 ```
